@@ -1,6 +1,6 @@
 from typing import Literal
 
-from stats import Char_Count_Dict, get_character_count, get_words_count
+from stats import Char_Count_Dict, get_character_count, get_words_count, sort_dict
 
 FRANKENSTEIN_BOOK_PATH = "books/frankenstein.txt"
 
@@ -29,15 +29,15 @@ def print_logs(count: int, char_count: Char_Count_Dict):
     print(get_text_decorate("word-count"))
     print(f"Found {count} total words")
     print(get_text_decorate("char-count"))
-    print(char_count)
 
 
 def main() -> None:
     file = get_book_text(FRANKENSTEIN_BOOK_PATH)
     count = get_words_count(file)
     char_count = get_character_count(file)
+    sorted = sort_dict(char_count)
 
-    print_logs(count, char_count)
+    print_logs(count, sorted)
 
 
 main()

@@ -1,8 +1,15 @@
+import re
+
+REGEX_LETER = "a-zA-ZäöüßÄÖÜ]"
 Char_Count_Dict = dict[str, int]
 
 
 def get_words_count(text: str):
     return len(text.split())
+
+
+def sort_dict(dict: Char_Count_Dict):
+    return sorted(dict.items(), key=lambda x: x[1], reverse=True)
 
 
 def get_character_count(text: str):
