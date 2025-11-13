@@ -4,7 +4,7 @@ from stats import Char_Count_Dict, get_character_count, get_words_count, sort_di
 
 FRANKENSTEIN_BOOK_PATH = "books/frankenstein.txt"
 
-Decoration = Literal["bookbot", "word-count", "char-count"]
+Decoration = Literal["bookbot", "word-count", "char-count", "end"]
 
 
 def get_book_text(file_path: str) -> str:
@@ -18,6 +18,7 @@ def get_text_decorate(decoration: Decoration):
         "bookbot": "============ BOOKBOT ============",
         "word-count": "----------- Word Count ----------",
         "char-count": "--------- Character Count -------",
+        "end": "============= END ===============",
     }
 
     return print_message[decoration]
@@ -29,6 +30,13 @@ def print_logs(count: int, char_count: Char_Count_Dict):
     print(get_text_decorate("word-count"))
     print(f"Found {count} total words")
     print(get_text_decorate("char-count"))
+    print(get_text_decorate("end"))
+
+    for char in char_count:
+        if not char[0].isalpha():
+            continue
+
+        print(f"{char[0]}: {char[1]}")
 
 
 def main() -> None:
