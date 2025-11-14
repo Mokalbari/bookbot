@@ -24,19 +24,20 @@ def get_text_decorate(decoration: Decoration):
     return print_message[decoration]
 
 
-def print_logs(count: int, char_count: Char_Count_Dict):
+def print_logs(count: int, char_count: list[tuple[str, int]]):
     print(get_text_decorate("bookbot"))
     print(f"Analyzing book found at {FRANKENSTEIN_BOOK_PATH}")
     print(get_text_decorate("word-count"))
     print(f"Found {count} total words")
     print(get_text_decorate("char-count"))
-    print(get_text_decorate("end"))
 
     for char in char_count:
         if not char[0].isalpha():
             continue
 
         print(f"{char[0]}: {char[1]}")
+
+    print(get_text_decorate("end"))
 
 
 def main() -> None:
